@@ -1,0 +1,944 @@
+body{
+  font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif; overflow-x: hidden;
+}
+
+div#netflixcarouselContainer {
+  padding: 0 10px;
+  margin: 0;
+  background: #0e0f11;
+  color: #ecf0f1;
+  font-family: 'Open Sans', sans-serif;
+  min-height: auto;/*100vh;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  background-color:transparent;
+}
+div#netflixcarouselContainer * {
+  box-sizing: border-box;
+}
+div#netflixcarouselContainer h1,
+div#netflixcarouselContainer p {
+  text-align: center;
+}
+div#netflixcarouselContainer p {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+div#netflixcarouselContainer a:link,
+div#netflixcarouselContainer a:hover,
+div#netflixcarouselContainer a:active,
+div#netflixcarouselContainer a:visited {
+  -webkit-transition-delay: 2s; /* Safari */
+  transition-delay: 2s;
+
+  -webkit-transition: color 150ms;
+  transition: color 150ms;
+  color: #95a5a6;
+  text-decoration: none;
+}
+div#netflixcarouselContainer a:hover {
+  color: #7f8c8d;
+  text-decoration: none;
+}
+div#netflixcarouselContainer .contain {
+  width: auto;
+}
+div#netflixcarouselContainer .row {
+  width: 100%;
+}
+
+div#netflixcarouselContainer .row__inner {
+  -webkit-transition: 450ms -webkit-transform;
+  transition: 450ms -webkit-transform;
+  transition: 450ms transform;
+  transition: 450ms transform, 450ms -webkit-transform;
+  font-size: 0;
+  white-space: nowrap;
+  margin: 10.3125px 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+div#netflixcarouselContainer .tile {
+  background-color:#0e0f11;
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  height: 140.625px;
+  margin-right: 3px;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-transition: 450ms all;
+  transition: 450ms all;
+  -webkit-transform-origin: center left;
+          transform-origin: center left;
+}
+.tile__media
+{
+  position:absolute; left:0px; top:0px; overflow:hidden; width:100%; height:100%;
+}
+div#netflixcarouselContainer .tile__img {
+    width: 250px;
+    height: 140.625px;
+  -o-object-fit: cover;
+     object-fit: cover;
+
+     position: absolute;
+     top: 0px;
+     left: 0px;
+}
+.tilepointertodetails
+{
+  color:white; width:100%; height:auto; padding:0px; position:absolute; bottom:-23px; z-index:1; text-align:center;
+}
+
+/* Xs screen */
+@media screen and (min-width: 100px){
+    div#netflixcarouselContainer .tile, div#netflixcarouselContainer .tile__img {
+      width: 207.759px;
+      height: 116.719px;
+    }
+}
+
+@media screen and (min-width: 600px){
+    div#netflixcarouselContainer .tile, div#netflixcarouselContainer .tile__img {
+      width: 207.759px;
+      height: 116.719px;
+    }
+}
+
+/* Small screen*/
+@media screen and (min-width: 768px) {
+    div#netflixcarouselContainer .tile, div#netflixcarouselContainer .tile__img {
+      width: 207.759px;
+      height: 116.719px;
+    }
+}
+
+/* Medium screen */
+@media screen and (min-width: 992px) {
+    div#netflixcarouselContainer .tile, div#netflixcarouselContainer .tile__img {
+        width: 207.759px;
+        height: 116.719px;
+    }
+}
+
+/* Large screen */
+@media screen and (min-width: 1200px) {
+    div#netflixcarouselContainer .tile, div#netflixcarouselContainer .tile__img {
+        width: 250px;
+        height: 140.625px;
+    }
+}
+
+div#netflixcarouselContainer .tile__details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  -webkit-transition: 450ms opacity;
+  transition: 450ms opacity;
+}
+div#netflixcarouselContainer .tile__details:after,
+div#netflixcarouselContainer .tile__details:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: #000;
+}
+div#netflixcarouselContainer .tile__details:after {
+  margin-top: -45px;
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ecf0f1;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+div#netflixcarouselContainer .tile__details:before {
+  /*content: '▶';*/
+  content: url("http://localhost/xxxstreamweb/static/right-arrow.svg");
+  -webkit-transform:scale(0.05, 0.05);
+  transform:scale(0.05, 0.05);
+  left: 0px;
+  width: 100%;
+  font-size: 30px;
+  margin-left: -3px;
+  margin-top: -280px;
+  text-align: center;
+  z-index: 2;
+  color: #e00;
+}
+div#netflixcarouselContainer .tile:hover .tile__details {
+  -webkit-transition-delay: 0.3s; /* Safari */
+  transition-delay: 0.3s;
+
+  opacity: 1;
+}
+div#netflixcarouselContainer .tile__title {
+  position: absolute;
+  bottom: 0;
+  padding: 10px 10px 20px 10px;
+  width:100%;
+  overflow:hidden;
+}
+div#netflixcarouselContainer .tile__title a
+{
+  color:white;
+  text-shadow: 1px 1px black;
+}
+div#netflixcarouselContainer .row__inner:hover {
+  -webkit-transition-delay: 0.3s; /* Safari */
+  transition-delay: 0.3s;
+
+  -webkit-transform: translate3d(-62.5px, 0, 0);
+          transform: translate3d(-62.5px, 0, 0);
+}
+div#netflixcarouselContainer .row__inner:hover .tile {
+  -webkit-transition-delay: 0.3s; /* Safari */
+  transition-delay: 0.3s;
+
+  opacity: 1;
+}
+div#netflixcarouselContainer .row__inner:hover .tile:hover {
+  -webkit-transition-delay: 0.3s; /* Safari */
+  transition-delay: 0.3s;
+
+  -webkit-transform: scale(2.0);
+          transform: scale(2.0);
+          
+  opacity: 1;
+}
+div#netflixcarouselContainer .tile:hover ~ .tile {
+  -webkit-transition-delay: 0.3s; /* Safari */
+  transition-delay: 0.3s;
+  
+  -webkit-transform: translate3d(250px, 0, 0);
+          transform: translate3d(250px, 0, 0);
+}
+
+
+/*SPECIFICS*/
+div#netflixcarouselContainer .lockedtile .tile__details div
+{
+  opacity: 0;
+}
+
+div#netflixcarouselContainer .row__inner:hover .lockedtile:hover {
+  -webkit-transition-delay: 0.0s; /* Safari */
+  transition-delay: 0.0s;
+
+  -webkit-transform: scale(1);
+          transform: scale(1);
+
+  opacity: 1;
+}
+
+div#netflixcarouselContainer .lockedtile:hover ~ .tile {
+  -webkit-transition-delay: 0.0s; /* Safari */
+  transition-delay: 0.0s;
+
+  -webkit-transform: translate3d(0px, 0, 0);
+          transform: translate3d(0px, 0, 0);
+}
+
+div#netflixcarouselContainer .whiteborder
+{
+  border:4px solid white;
+  /*overflow: hidden;*/
+}
+
+div.title_description
+{
+  font-size:7px;
+}
+div#watch-video-container div#video-player-embed, div#alt-watch-video-container div#video-player-embed
+{
+  width: 100%;
+  height: 100%;
+}
+
+div#alt-watch-video-container
+{
+  height: 430px;
+  background-color:#000;
+  overflow: hidden;
+}
+
+div#watch-video-container video, div#alt-watch-video-container video
+{
+  margin: 0px;
+  width: 100%;
+  height: 100%
+}
+
+
+div#products-adverts-container
+{
+  width: 100%;
+  height: 100%;
+}
+div#main-advert
+{
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px 20px 20px;
+}
+div.other-advert
+{
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+div#main-advert img, div.other-advert img
+{
+  width:100%;
+  height: 100%;
+}
+
+button.carouselLCtrl, button.carouselRCtrl
+{
+  position: absolute; top:0px; left:0px; z-index:1000; 
+  background-color: #0e0f11; border: none; opacity: 0.9;
+  border-radius: 0px;
+}
+button.carouselLCtrl i, button.carouselRCtrl i
+{ 
+  color:#cc135c;
+  font-size: 50px;
+}
+button.carouselLCtrl
+{
+  margin-left: -50px;
+}
+
+button.carouselLCtrl:hover, button.carouselRCtrl:hover
+{
+  background-color: #0e0f11;
+}
+
+div#homebanner
+{
+  height: 500px; background-color: #141619; overflow-y: hidden;
+}
+
+div.content-body {
+  padding:0px 0px 0px 30px; position:relative; top:-70px;
+}
+
+div.productpanel
+{
+  height: auto;
+  background-color: #141619;
+  margin-bottom: 30px;
+  border-bottom: 1px dotted #0e0f11;
+  padding-bottom: 10px;
+}
+
+div.productvideopanel
+{
+  max-height: 140.625px;
+  cursor: pointer;
+  overflow: hidden;
+}
+div.productvideopanel img
+{
+  width:100%;
+  height:100%;
+}
+
+div.productdetailspanel div.text-content
+{
+  height:auto;
+  max-height: 90px;
+  overflow: hidden;
+  color:#fff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+div.title_full_details_container
+{
+  width: 100%;
+  height: 500px;
+  max-height: 500px;
+  margin-top:-35px;
+
+  position: relative; z-index: 0;
+  
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: 70% 100%;
+  background-color:black;
+}
+
+div.gradient-overlay
+{
+  width:100%;
+  height: 100%;
+  position:relative; top:0; left:0; z-index:0;
+
+  background: -webkit-linear-gradient(left, black, rgb(0,0,0, 0.96), transparent); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, black,rgb(0,0,0, 0.96), transparent); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, black,rgb(0,0,0, 0.96), transparent); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, black,rgb(0,0,0, 0.96), transparent); /* Standard syntax */
+}
+div.container-overlay
+{
+  width:100%;
+  height: 100%;
+}
+
+i.full_detail_playbtn
+{
+  color:#c00; 
+  font-size:150px;
+  cursor: pointer;
+  float: right;
+  margin-right:250px;
+  margin-top: 100px;
+}
+i.full_detail_playbtn:hover
+{
+  color: #cc135c;
+}
+i.close-details-btn
+{
+  float:right;
+  margin-right:20px;
+  cursor:pointer;
+}
+
+div.title_full_details_container a
+{
+  color:#efefef;
+}
+div.title_full_details_container div.full_details_left_col
+{
+  float: left;
+  width:auto;
+  height: auto;
+  padding:20px 0px 0px 60px;
+}
+.title_full_details_container .fd_movie_title_name
+{
+  color: #efefef;
+  font-size:45px;
+  font-weight: bold;
+}
+div.fd_movie_starring, div.fd_movie_description
+{
+  width:60%;
+  font-size:16px;
+  margin:10px 0px 15px 0px;
+  color: #A4A4A4;
+}
+div.fd_movie_starring span
+{
+  color:#efefef;
+}
+
+div.title_full_details_container div.full_details_right_col
+{
+  float: right;
+  width:auto;
+  height: auto;
+  padding:20px 0px 20px 20px;
+}
+div.title_full_details_container i.icon-cross
+{
+  font-size:20px;
+  color:white;
+}
+div.title_details_panel_show_arrow
+{
+  text-align: center;
+  font-size:15px;
+  width:100%;
+  margin:30px 0px 0px -10px;
+  position: absolute;
+  bottom:0;
+  height: auto;
+  -webkit-transform: scale(2.0, 0.7);
+  transform: scale(2.0, 0.7);
+}
+div.title_details_panel_show_arrow:hover
+{
+  color:#e00;
+}
+
+div.vp-content-body
+{
+  padding:30px 0px 0px 0px; border:none;
+}
+
+div#vp-mobile-advert-area, div#mobile-related-videos-view
+{
+  display: none;
+}
+div.mobile-related-video-item
+{
+  margin-bottom:20px;
+}
+div.mvr-thumbnail
+{
+  float: left;
+  margin-right: 5px;
+  width:40%;
+  min-width:100px;
+  max-width: 160px;
+  height: 114px;
+  overflow: hidden;
+}
+
+div.mvr-details
+{
+  float: left;
+  width:55%;
+  height: 114px;
+  overflow: hidden;
+}
+
+div.mvr-thumbnail img
+{
+  max-width:100%; height:auto;
+}
+
+div#vp-mini-ad-thumbnail, div#vp-mini-ad-details
+{
+  float: left;
+  height: inherit;
+  margin-left: 5px;
+}
+div#vp-mini-ad-thumbnail
+{
+  width: 30%;
+  max-width: 100px;
+  padding:5px;
+  overflow: hidden;
+}
+div#vp-mini-ad-thumbnail img
+{
+  width:100%;
+  height: auto;
+}
+div#vp-mini-ad-details
+{
+  width:40%;
+  padding:5px;
+  overflow: hidden;
+}
+div#vp-mini-ad-actionbtn
+{
+  float:right;
+  width:25%;
+  background-color:#cc135c;
+  height: inherit;
+  cursor: pointer;
+  text-align: center;
+  padding:10px;
+  overflow: hidden;
+}
+div#vp-mini-ad-actionbtn label
+{
+  font-size:20px; font-weight: bold; color:#efefef;
+}
+
+div#col1, div#col2, div#col3, div#col4
+{
+  float: left;
+  margin-right:2px;
+  width: 25%;
+  height: auto;
+}
+
+div#socialmediaicons a
+{
+  color:grey;
+}
+
+div.vp-card-header
+{
+  background-color:transparent; border:none; padding:130px 0px 20px 50px;
+}
+
+div.vp-cardblock
+{
+  padding: 0px 50px 20px 50px;
+}
+
+div.order-ads-product-now
+{
+  position: absolute;
+  width:100%;
+  top:70%;
+  left:0px;
+  font-size:13px;
+  color:white;
+}
+div.order-ads-product-now div#sponsored-ads-overlay
+{
+  float: left;
+  background-color: black;
+  margin-left:13px;
+  color: white;
+  border-top:1px solid white;
+  border-right:1px solid white;
+  border-bottom:1px solid white;
+  opacity: 0.75;
+  width:auto;
+  padding: 4px;
+}
+div.order-ads-product-now div.order-product-now-overlay
+{
+  width:auto;
+  float: right;
+  /*font-weight: bold;*/
+  font-size:14px;
+  background-color: black;
+  /*border: 7px solid black;*/
+  margin-right:14px;
+  opacity:0.75;
+  color:white;
+  cursor: pointer;
+  border-top:1px solid white;
+  border-left:1px solid white;
+  border-bottom:1px solid white;
+  padding: 4px;
+  margin-bottom: 5px;
+}
+
+div#advert-countdown
+{
+  text-align:right;
+}
+
+div.mobile-view-menus-overlay
+{
+  position: absolute;
+  top:0px;
+  left: 0px;
+  font-size:30px;
+  color: white;
+  width:100%;
+  padding-top:20px;
+}
+
+div.mobile-view-menus-overlay div#homepage-btn-overlay
+{
+  float: left;
+  padding:10px 20px 10px 20px;
+  border-top:1px solid white;
+  border-right:1px solid white;
+  border-bottom:1px solid white;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color:black;
+  opacity: 0.65;
+}
+
+div.mobile-view-menus-overlay div#searchpage-btn-overlay
+{
+  float: right;
+  padding:10px 20px 10px 20px;
+  border-top:1px solid white;
+  border-left:1px solid white;
+  border-bottom:1px solid white;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color:black;
+  opacity: 0.65;
+}
+
+div#mobile-view-side-bar
+{
+  display: none;
+  background-color: #141619;
+  margin-top:10px;
+}
+div#mobile-view-side-bar li a
+{
+  background-color:#141619;
+  color:#efefef;
+  font-size:12px; font-weight: bold;
+}
+
+div.search-query-input-container
+{
+  width: 0px;
+}
+input.txtSearchQuery
+{
+  background-color:black; color:white; border:1px solid white; border-radius:0px;
+  margin-top:20px; width:100%;
+}
+
+img.brand-logo
+{
+  width:169px; height: 48px;
+}
+
+div.carouselTitle
+{
+  padding-left:16px;
+}
+
+div#mobile-related-videos-title
+{
+  display: none; font-size:15px; font-weight: bold; color:#afafaf; padding:6px  6px 6px 15px;
+  border-bottom: 1px solid grey;
+  margin-bottom: 2px;
+}
+
+div#mobile-related-videos-title span
+{
+  float:left;
+}
+div#mobile-related-videos-title i.change-view
+{
+  cursor: pointer;
+  font-size:22px; color:white;
+  float:right;
+}
+
+
+@media all and (max-width: 768px) {
+  div#col1, div#col2, div#col3, div#col4
+  {
+    width: 35%;
+    margin-right:10px;
+  }
+
+  div#netflixcarouselContainer .row__inner:hover .tile:hover {
+    -webkit-transform: scale(1.65);
+            transform: scale(1.65);
+  }
+
+  div#desktop-footer-wrapper
+  {
+    display: none;
+  }
+
+  div.card {
+    overflow: scroll;
+  }
+    
+  img.brand-logo
+  {
+    width:106px; height: 30px; margin-top:-8px;
+  }
+
+  li#dot3right
+  {
+    display: none;
+  }
+
+  div#mobile-view-side-bar
+  {
+    display: block;
+  }
+
+  div.order-ads-product-now
+  {
+    top:40%;
+  }
+
+  div.title_full_details_container div.full_details_left_col
+  {
+    padding: 5px;
+    width: 50%;
+  }
+  div#homebanner
+  {
+    height: auto; background-color: transparent; overflow-y: hidden;
+  }
+
+  div.content-body {
+    padding:0px 0px 0px 0px; position:relative; top:0px;
+  }
+  div.vp-cardblock
+  {
+    padding: 0px;
+  }
+
+  div#alt-watch-video-container
+  {
+    width: 100%;
+    height: auto;
+    margin:0px;
+  }
+
+  div.vp-content-wrapper, section.vp-mainvideoarea
+  {
+    padding: 0px; margin: 0px;
+  }
+
+  div.title_full_details_container
+  {
+    height: auto;
+    margin-top:-50px;
+    padding-bottom: 10px;
+  }
+
+  .title_full_details_container .fd_movie_description
+  {
+    font-size:12px;
+    font-weight: normal;
+  }
+  .title_full_details_container .fd_movie_starring
+  {
+    font-size:10px;
+    font-weight: normal;
+  }
+  .title_full_details_container .fd_movie_title_name
+  {
+    font-size:15px;
+    font-weight: bold;
+    color:white;
+  }
+  div.title_full_details_container i.icon-cross
+  {
+    font-size:10px;
+  }
+
+  i.full_detail_playbtn
+  {
+    font-size:50px;
+    margin-right:100px;
+    margin-top: 30px;
+  }
+
+  div.vp-content-body
+  {
+    padding:0px; margin: 0px;
+  }
+
+  /*nav.vp-pagenavbar, div.vp-navbg, div.vp-content-header,  div.vp-card-header*/ div.productpanel, div#desktop-related-videos-view
+  {
+    display: none;
+  }
+  div.vp-card-header
+  {
+    margin: 10px; padding:10px; color:black;
+  }
+  body
+  {
+    padding: 0px; margin: 0px; overflow: hidden;
+  }
+  div.vp-col-md-8
+  {
+    padding: 0px; margin: 0px; margin-top:-14px;
+  }
+  div#vp-mobile-advert-area
+  {
+    display: block;
+    min-height: 70px;
+    height:70px;
+    margin-top: -10px;
+    background-color:#141619;
+    padding-bottom: 5px;
+    box-shadow: 0px 2px #101215;
+  }
+
+  div#mobile-related-videos-view
+  {
+    display: block;
+    height: 300px;
+    width: 100%;
+    margin:0px 0px 0px 15px;
+    padding-top: 10px;
+    overflow-y: auto;
+  }
+
+  div#mobile-related-videos-title
+  {
+    display: block;
+  }
+}
+
+.orderVideoAdProduct {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2000;
+}
+
+.mega-dropdown-menu
+{
+  background-color: #000;
+  border-radius: 0px;
+}
+.mega-dropdown-menu ul li a
+{
+  color:white;
+  font-weight: bold;
+}
+.mega-dropdown-menu ul li a:hover
+{
+  background-color: transparent;
+  text-decoration: underline;
+}
+li.mydropdownlinks a
+{
+  font-size:12px; font-family: Helvetica, Verdana, sans-serif;
+}
+li.mydropdownlinks a:hover
+{
+  text-decoration: underline;
+}
+
+div#search_heading
+{
+  margin-left:30px;
+  margin-bottom: 50px;
+}
+div.dropdown-form-order-product
+{
+  padding:10px; display: none;
+}
+div#footermain
+{
+  color:grey;
+  padding-bottom: 30px;
+}
+div#footermain i
+{
+  margin-right: 18px;
+}
+
+div#footermain ul
+{
+  list-style: none; font-size:13px; margin:0px; padding:0px; text-align: left;
+}
+div#footermain ul a
+{
+  color:grey;
+}
+div#footermain ul a:hover
+{
+  text-decoration: underline;
+}
+
+a.dropdown-item:hover{
+  background-color:transparent;
+  text-decoration: underline;
+}

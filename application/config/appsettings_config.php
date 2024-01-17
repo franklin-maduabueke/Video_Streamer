@@ -1,0 +1,1 @@
+<?php $config['homebanner'] = 'dudubanner.png';
